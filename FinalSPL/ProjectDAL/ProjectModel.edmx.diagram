@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b5ba53f5f62e46e4aa6de90dfc04aa05" Name="Diagram1">
+        <EntityTypeShape EntityType="DBSLModel.BloodBank" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSLModel.BloodGroupStock" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSLModel.Booking" Width="1.5" PointX="6" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="DBSLModel.FK_BloodGroupStock_BloodBank" ManuallyRouted="false" />
+        <AssociationConnector Association="DBSLModel.FK_Booking_BloodBank" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DBSLModel.User" Width="1.5" PointX="0.75" PointY="7" />
+        <AssociationConnector Association="DBSLModel.FK_Booking_User" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,92 @@
+﻿@using ProjectDAL
+@model ProjectDAL.BloodGroupStock
+
+@{
+    ViewBag.Title = "AddStock";
+}
+
+<h2 style="color: white; text-align: center;">Add</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend style="color: white; text-align: center;">Stock</legend>
+
+        <div class="row">
+
+            <div class="col-sm-4"></div>
+
+            <div class="col-sm-6">
+
+                <div class="col-sm-12">
+                    <div class="editor-label col-sm-4">
+                        @Html.LabelFor(model => model.BBUsername)
+                    </div>
+                    <div class="editor-field col-sm-8">
+                        @Html.EditorFor(model => model.BBUsername)
+                        @Html.ValidationMessageFor(model => model.BBUsername)
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="editor-label col-sm-4">
+                        @Html.LabelFor(model => model.BloodGroupName)
+                    </div>
+                    <div class="editor-field col-sm-8">
+                        @Html.DropDownList("BloodGroupStock", new List<SelectListItem>
+                        {
+                            new SelectListItem {Text = "A(+)", Value = "A(+)"},
+                            new SelectListItem {Text = "A(-)", Value = "A(-)"},
+                            new SelectListItem {Text = "B(+)", Value = "B(+)"},
+                            new SelectListItem {Text = "B(-)", Value = "B(-)"},
+                            new SelectListItem {Text = "O(+)", Value = "O(+)"},
+                            new SelectListItem {Text = "O(-)", Value = "O(-)"},
+                            new SelectListItem {Text = "AB(+)", Value = "AB(+)"},
+                            new SelectListItem {Text = "AB(-)", Value = "AB(-)"}
+                        }, "-Select Blood Group-")
+                        @Html.ValidationMessageFor(model => model.BloodGroupName)
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="editor-label col-sm-4">
+                        @Html.LabelFor(model => model.Amount)
+                    </div>
+                    <div class="editor-field col-sm-8">
+                        @Html.EditorFor(model => model.Amount)
+                        @Html.ValidationMessageFor(model => model.Amount)
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <br />
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-2">
+                        <input type="submit" value="Save" />
+                    </div>
+                    <div class="col-sm-7"></div>
+                </div>
+
+
+            </div>
+
+
+            <div class="col-sm-2"></div>
+
+        </div>
+
+    </fieldset>
+
+}
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

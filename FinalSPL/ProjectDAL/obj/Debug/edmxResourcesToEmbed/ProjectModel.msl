@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBSLModelStoreContainer" CdmEntityContainer="DBSLEntities">
+    <EntitySetMapping Name="BloodBanks">
+      <EntityTypeMapping TypeName="DBSLModel.BloodBank">
+        <MappingFragment StoreEntitySet="BloodBank">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="GovtRegNumber" ColumnName="GovtRegNumber" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="AreaWithinCity" ColumnName="AreaWithinCity" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BloodGroupStocks">
+      <EntityTypeMapping TypeName="DBSLModel.BloodGroupStock">
+        <MappingFragment StoreEntitySet="BloodGroupStock">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BBUsername" ColumnName="BBUsername" />
+          <ScalarProperty Name="BloodGroupName" ColumnName="BloodGroupName" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="DBSLModel.Booking">
+        <MappingFragment StoreEntitySet="Booking">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserUsername" ColumnName="UserUsername" />
+          <ScalarProperty Name="BBUsername" ColumnName="BBUsername" />
+          <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="BookingStartingDate" ColumnName="BookingStartingDate" />
+          <ScalarProperty Name="BookingEndingDate" ColumnName="BookingEndingDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="DBSLModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="DonationStatus" ColumnName="DonationStatus" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="AreaWithinCity" ColumnName="AreaWithinCity" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

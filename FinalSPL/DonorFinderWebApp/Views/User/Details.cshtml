@@ -1,0 +1,98 @@
+﻿@using ProjectDAL
+@model ProjectDAL.User
+
+@{
+    ViewBag.Title = "Details";
+
+    var user = new UserRepository().GetUserByUsername(Context.User.Identity.Name);
+}
+
+<h2 style="color: white; text-align: center;">User</h2>
+
+
+<fieldset style="color: white;">
+    <legend style="color: white; text-align: center;">Information</legend>
+
+    <table class="table">
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BloodGroup)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AreaWithinCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DonationStatus)
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => user.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => user.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(model => user.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => user.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(model => user.BloodGroup)
+            </td>
+            <td>
+                @Html.DisplayFor(model => user.City)
+            </td>
+            <td>
+                @Html.DisplayFor(model => user.AreaWithinCity)
+            </td>
+            <td>
+                @Html.DisplayFor(model => user.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(model => user.ContactNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(model => user.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(model => user.DonationStatus)
+            </td>
+        </tr>
+    </table>
+</fieldset>
+
+<p style="text-align: center; color: white">
+
+    @Html.ActionLink("Back to Profile", "Index") &nbsp;|&nbsp;
+    @Html.ActionLink("Update Info", "Edit", new { username = user.UserName }) &nbsp;|&nbsp;
+    @Html.ActionLink("Delete Account", "Delete", new { username = user.UserName })
+
+</p>

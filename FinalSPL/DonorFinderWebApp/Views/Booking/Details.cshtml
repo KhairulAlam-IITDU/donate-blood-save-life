@@ -1,0 +1,96 @@
+﻿@model ProjectDAL.Booking
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 style="color: white; text-align: center;">Details</h2>
+
+<fieldset>
+    <legend style="color: white; text-align: center;">Booking</legend>
+    <table style="color: white; width: 50%;">
+        <tr>
+
+            <td>
+                <div class="display-label">
+                    @Html.DisplayNameFor(model => model.UserUsername)
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.UserUsername)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    @Html.DisplayNameFor(model => model.BBUsername)
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.BBUsername)
+                </div>
+            </td>
+        </tr>
+        <tr>
+
+
+            <td>
+
+                <div class="display-label">
+                    @Html.DisplayNameFor(model => model.BloodGroup)
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.BloodGroup)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    @Html.DisplayNameFor(model => model.Amount)
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.Amount)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+                <div class="display-label">
+                    @Html.DisplayNameFor(model => model.BookingStartingDate)
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.BookingStartingDate)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    @Html.DisplayNameFor(model => model.BookingEndingDate)
+                </div>
+            </td>
+
+            <td>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.BookingEndingDate)
+                </div>
+            </td>
+        </tr>
+
+    </table>
+</fieldset>
+
+<div style="text-align: center;">
+    @Html.ActionLink("Back to Profile", "Index", "User")
+</div>

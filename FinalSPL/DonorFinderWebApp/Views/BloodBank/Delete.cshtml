@@ -1,0 +1,82 @@
+﻿@using ProjectDAL
+@model ProjectDAL.BloodBank
+
+@{
+    ViewBag.Title = "DeleteBB";
+    
+    var bbank = new BloodBank();
+}
+
+<h2 style="color: white; text-align: center;">Delete Blood Bank</h2>
+
+<h3 style="color: white; text-align: center;">Are you sure you want to delete this blood bank?</h3>
+<fieldset>
+    <br />
+
+    <table class="table" style="color: white;">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AreaWithinCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactNumber)
+            </th>
+
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.City)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.AreaWithinCity)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ContactNumber)
+            </td>
+
+        </tr>
+    </table>
+</fieldset>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <p style="text-align: center;">
+        <input type="submit" value="Delete"/>
+        <br/> <br />
+        @Html.ActionLink("Back to Profile", "Index")
+    </p>
+}

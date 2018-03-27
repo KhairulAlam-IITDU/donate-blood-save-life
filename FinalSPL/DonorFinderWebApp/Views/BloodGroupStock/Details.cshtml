@@ -1,0 +1,47 @@
+﻿@using ProjectDAL
+@model ProjectDAL.BloodGroupStock
+
+@{
+    ViewBag.Title = "Details";
+
+
+}
+
+<h2 style="color: white; text-align: center;">Stock Details</h2>
+
+
+<table class="table" style="color: white; text-align: center;">
+    <tr>
+        <th style="text-align: center;">
+            @Html.DisplayNameFor(model => model.BBUsername)
+        </th>
+        <th style="text-align: center;">
+            @Html.DisplayNameFor(model => model.BloodGroupName)
+        </th>
+        <th style="text-align: center;">
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+
+    </tr>
+
+
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.BBUsername)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.BloodGroupName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Amount)
+        </td>
+
+    </tr>
+
+</table>
+
+<p style="text-align: center;">
+    @Html.ActionLink("Back", "StockDetails", "BloodBank", new { username = Model.BBUsername }, null) &nbsp;|&nbsp;
+    @Html.ActionLink("Edit", "Edit", "BloodGroupStock", new {id = Model.Id}, null) &nbsp;|&nbsp;
+    @Html.ActionLink("Delete", "Delete", "BloodGroupStock", new {id = Model.Id}, null)
+</p>

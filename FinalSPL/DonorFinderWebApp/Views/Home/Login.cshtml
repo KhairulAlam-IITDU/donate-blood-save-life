@@ -1,0 +1,77 @@
+﻿@model DonorFinderWebApp.Models.AccountLogin
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<div>
+
+    <h2 style="color: white; text-align: center;">Login</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+
+        <fieldset>
+            <legend style="color: white; text-align: center;">Account Login</legend>
+
+            <div class="row">
+                <div class="col-md-4"></div>
+
+                <div class="col-md-5">
+
+
+                    <div class="col-sm-12">
+                        <div class="editor-label col-sm-4">
+                            @Html.LabelFor(model => model.Username)
+                        </div>
+                        <div class="editor-field col-sm-8">
+                            @Html.EditorFor(model => model.Username)
+                            @Html.ValidationMessageFor(model => model.Username)
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class=" editor-label col-sm-4">
+                            @Html.LabelFor(model => model.Password)
+                        </div>
+                        <div class="editor-field col-sm-8">
+                            @Html.EditorFor(model => model.Password)
+                            @Html.ValidationMessageFor(model => model.Password)
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <br />
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-2">
+                            <input type="submit" value="Login" />
+                        </div>
+                        <div class="col-sm-6"></div>
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-3"></div>
+            </div>
+        </fieldset>
+
+    }
+
+    <div style="text-align: center;">
+        <br />
+        <p style="text-align: center; color: white;">Not Registered yet? @Html.ActionLink("Register Now!", "Create", "User")</p>
+        <br />
+        <p style="text-align: center; color: white;">Representative of a Blood Bank? @Html.ActionLink("Register Your Company Now!", "Create", "BloodBank") </p>
+        <br />
+        @Html.ActionLink("Back to Home", "Index")
+    </div>
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Views/Shared/_Layout.cshtml")
+}

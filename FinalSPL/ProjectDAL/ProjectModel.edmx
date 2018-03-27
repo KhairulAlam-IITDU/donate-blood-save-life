@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBSLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BloodBank">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GovtRegNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AreaWithinCity" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactNumber" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BloodGroupStock">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BBUsername" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BloodGroupName" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserUsername" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BBUsername" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BloodGroup" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="BookingStartingDate" Type="date" />
+          <Property Name="BookingEndingDate" Type="date" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="BloodGroup" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AreaWithinCity" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="ContactNumber" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="DonationStatus" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BloodGroupStock_BloodBank">
+          <End Role="BloodBank" Type="Self.BloodBank" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BloodGroupStock" Type="Self.BloodGroupStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BloodBank">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="BloodGroupStock">
+              <PropertyRef Name="BBUsername" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Booking_BloodBank">
+          <End Role="BloodBank" Type="Self.BloodBank" Multiplicity="1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BloodBank">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="BBUsername" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Booking_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="UserUsername" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBSLModelStoreContainer">
+          <EntitySet Name="BloodBank" EntityType="Self.BloodBank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BloodGroupStock" EntityType="Self.BloodGroupStock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BloodGroupStock_BloodBank" Association="Self.FK_BloodGroupStock_BloodBank">
+            <End Role="BloodBank" EntitySet="BloodBank" />
+            <End Role="BloodGroupStock" EntitySet="BloodGroupStock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Booking_BloodBank" Association="Self.FK_Booking_BloodBank">
+            <End Role="BloodBank" EntitySet="BloodBank" />
+            <End Role="Booking" EntitySet="Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Booking_User" Association="Self.FK_Booking_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Booking" EntitySet="Booking" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBSLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BloodBank">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GovtRegNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AreaWithinCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BloodGroupStocks" Relationship="Self.FK_BloodGroupStock_BloodBank" FromRole="BloodBank" ToRole="BloodGroupStock" />
+          <NavigationProperty Name="Bookings" Relationship="Self.FK_Booking_BloodBank" FromRole="BloodBank" ToRole="Booking" />
+        </EntityType>
+        <EntityType Name="BloodGroupStock">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BBUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BloodGroupName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BloodBank" Relationship="Self.FK_BloodGroupStock_BloodBank" FromRole="BloodGroupStock" ToRole="BloodBank" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BBUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BloodGroup" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="BookingStartingDate" Type="DateTime" Precision="0" />
+          <Property Name="BookingEndingDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="BloodBank" Relationship="Self.FK_Booking_BloodBank" FromRole="Booking" ToRole="BloodBank" />
+          <NavigationProperty Name="User" Relationship="DBSLModel.FK_Booking_User" FromRole="Booking" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_BloodGroupStock_BloodBank">
+          <End Role="BloodBank" Type="Self.BloodBank" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BloodGroupStock" Type="Self.BloodGroupStock" Multiplicity="*" >
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="BloodBank">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="BloodGroupStock">
+              <PropertyRef Name="BBUsername" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Booking_BloodBank">
+          <End Role="BloodBank" Type="Self.BloodBank" Multiplicity="1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BloodBank">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="BBUsername" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBSLEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BloodBanks" EntityType="Self.BloodBank" />
+          <EntitySet Name="BloodGroupStocks" EntityType="Self.BloodGroupStock" />
+          <EntitySet Name="Bookings" EntityType="Self.Booking" />
+          <AssociationSet Name="FK_BloodGroupStock_BloodBank" Association="Self.FK_BloodGroupStock_BloodBank">
+            <End Role="BloodBank" EntitySet="BloodBanks" />
+            <End Role="BloodGroupStock" EntitySet="BloodGroupStocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Booking_BloodBank" Association="Self.FK_Booking_BloodBank">
+            <End Role="BloodBank" EntitySet="BloodBanks" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <EntitySet Name="Users" EntityType="DBSLModel.User" />
+          <AssociationSet Name="FK_Booking_User" Association="DBSLModel.FK_Booking_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BloodGroup" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AreaWithinCity" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNumber" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="DonationStatus" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Bookings" Relationship="DBSLModel.FK_Booking_User" FromRole="User" ToRole="Booking" />
+        </EntityType>
+        <Association Name="FK_Booking_User">
+          <End Type="DBSLModel.User" Role="User" Multiplicity="1" />
+          <End Type="DBSLModel.Booking" Role="Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="UserUsername" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBSLModelStoreContainer" CdmEntityContainer="DBSLEntities">
+          <EntitySetMapping Name="BloodBanks">
+            <EntityTypeMapping TypeName="DBSLModel.BloodBank">
+              <MappingFragment StoreEntitySet="BloodBank">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="GovtRegNumber" ColumnName="GovtRegNumber" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="AreaWithinCity" ColumnName="AreaWithinCity" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BloodGroupStocks">
+            <EntityTypeMapping TypeName="DBSLModel.BloodGroupStock">
+              <MappingFragment StoreEntitySet="BloodGroupStock">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BBUsername" ColumnName="BBUsername" />
+                <ScalarProperty Name="BloodGroupName" ColumnName="BloodGroupName" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bookings">
+            <EntityTypeMapping TypeName="DBSLModel.Booking">
+              <MappingFragment StoreEntitySet="Booking">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserUsername" ColumnName="UserUsername" />
+                <ScalarProperty Name="BBUsername" ColumnName="BBUsername" />
+                <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="BookingStartingDate" ColumnName="BookingStartingDate" />
+                <ScalarProperty Name="BookingEndingDate" ColumnName="BookingEndingDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DBSLModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="DonationStatus" ColumnName="DonationStatus" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="AreaWithinCity" ColumnName="AreaWithinCity" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

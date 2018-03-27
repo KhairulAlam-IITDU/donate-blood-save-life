@@ -1,0 +1,72 @@
+﻿@using System.Drawing
+@using ProjectDAL
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/bootstrap.css")
+    @Styles.Render("~/Content/bootstrap.min.css")
+    @Styles.Render("~/Content/Site.css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+
+    <nav id="myNav" class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @*<a class="navbar-brand" href="#">Logo</a>*@
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact Us", "ContactUs", "Home")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @{
+                        if (Context.User.Identity.IsAuthenticated)
+                        {
+                            <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                            <li>@Html.ActionLink("Register", "Create", "User")</li>
+
+                        }
+
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div @*class="container text-center"*@ id="body">
+        @RenderBody()
+    </div><br>
+
+    <footer class="container-fluid text-center">
+        <p style="color: white;">&copy;A. S. M. Khairul Alam & Sazidul Islam, IITDU, 2016</p>
+    </footer>
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+</body>
+
+</html>

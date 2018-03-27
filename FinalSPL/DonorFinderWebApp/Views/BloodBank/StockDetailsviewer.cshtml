@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ProjectDAL.BloodGroupStock>
+
+
+@{
+    ViewBag.Title = "StockDetails";
+
+}
+
+<h2 style="color: white; text-align: center;">Stock Details</h2>
+
+
+<table class="table" style="color: white; text-align: center;">
+    <tr>
+        <th style="text-align: center;">
+            @Html.DisplayNameFor(model => model.BBUsername)
+        </th>
+        <th style="text-align: center;">
+            @Html.DisplayNameFor(model => model.BloodGroupName)
+        </th>
+        <th style="text-align: center;">
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th style="color: white; text-align: center;"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BBUsername)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BloodGroupName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.ActionLink("Book", "Create", "Booking", new { username = item.BBUsername }, null)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div style="text-align: center;">
+    @Html.ActionLink("Back to Profile", "Index", "User")
+</div>

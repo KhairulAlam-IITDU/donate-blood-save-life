@@ -1,0 +1,68 @@
+﻿@using ProjectDAL
+@model ProjectDAL.BloodBank
+
+@{
+    ViewBag.Title = "Index";
+
+    var bbank = new BloodBankRepository().GetBloodBankByBloodBankUserName(User.Identity.Name);
+}
+
+<div class="bloodBankHome">
+    <h2 style="color: white; text-align: center;">Profile</h2>
+    <hr style="color: white;" />
+
+    <div class="row">
+
+        <div class="col-sm-4"></div>
+
+        <div class="userDash col-sm-4">
+
+            <div id="userMessage" style="color: black;">
+
+                <p>@ViewBag.SuccessMessage</p>
+
+            </div>
+
+            <div id="userMenu">
+                <h3 style="color: black; text-align: center;">Menu</h3>
+                <table class="table" style="text-align: center; height: 180px;">
+                    <tr style="background: beige;">
+                        <td style="vertical-align: middle;">
+                            @Html.ActionLink("Search Donor", "SearchDonor")
+                        </td>
+                    </tr>
+                    <tr style="background: beige;">
+                        <td style="vertical-align: middle;">
+                            @Html.ActionLink("Update Compnay Information", "Edit", new {username = bbank.UserName})
+                        </td>
+                    </tr>
+                    <tr style="background: beige;">
+                        <td style="vertical-align: middle;">
+                            @Html.ActionLink("Add Blood Stock", "Create", "BloodGroupStock"/*, new { username = bbank.UserName }, null*/)
+                        </td>
+                    </tr>
+                    <tr style="background: beige;">
+                        <td style="vertical-align: middle;">
+                            @Html.ActionLink("Update Blood Stock", "StockDetails", new {username = bbank.UserName})
+                        </td>
+                    </tr>
+                    <tr style="background: beige;">
+                        <td style="vertical-align: middle;">
+                            @Html.ActionLink("View Booking", "BookingDetails", new { username = bbank.UserName })
+                        </td>
+                    </tr>
+                    <tr style="background: beige;">
+                        <td style="vertical-align: middle;">
+                            @Html.ActionLink("Account Settings", "Details", new { username = bbank.UserName })
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="col-sm-4"></div>
+
+    </div>
+</div>
+

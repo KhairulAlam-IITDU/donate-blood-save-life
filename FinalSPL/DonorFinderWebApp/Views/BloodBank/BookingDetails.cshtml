@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ProjectDAL.Booking>
+
+
+@{
+    ViewBag.Title = "StockDetails";
+
+}
+
+<h2 style="color: white; text-align: center;">Booking Details</h2>
+
+
+<table class="table" style="color: white; text-align: center;">
+    <tr>
+        <th style="text-align: center;">
+            @Html.DisplayNameFor(model => model.UserUsername)
+        </th>
+        <th style="text-align: center;">
+            @Html.DisplayNameFor(model => model.BBUsername)
+        </th>
+        <th style="text-align: center;">
+            @Html.DisplayNameFor(model => model.BloodGroup)
+        </th>
+        <th style="text-align: center;">
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th style="text-align: center;">
+            @Html.DisplayNameFor(model => model.BookingStartingDate)
+        </th>
+        <th style="color: white; text-align: center;"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserUsername)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BBUsername)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BloodGroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingStartingDate)
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+<div style="text-align: center;">
+    @Html.ActionLink("Back to Profile", "Index", "BloodBank")
+</div>

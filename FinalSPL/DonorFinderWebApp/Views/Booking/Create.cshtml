@@ -1,0 +1,116 @@
+﻿@using ProjectDAL
+@model ProjectDAL.Booking
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2 style="text-align: center; color: white;">Booking</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend style="color: white; text-align: center;"></legend>
+
+        <div class="row">
+
+            <div class="col-sm-4"></div>
+
+            <div class="col-sm-6">
+
+                <div class="col-sm-12">
+                    <div class="editor-label col-sm-4">
+                        @Html.LabelFor(model => model.UserUsername)
+                    </div>
+                    <div class="editor-field col-sm-8">
+                        @Html.EditorFor(model => model.UserUsername)
+                        @Html.ValidationMessageFor(model => model.UserUsername)
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="editor-label col-sm-4">
+                        @Html.LabelFor(model => model.BBUsername)
+                    </div>
+                    <div class="editor-field col-sm-8">
+                        @Html.EditorFor(model => model.BBUsername)
+                        @Html.ValidationMessageFor(model => model.BBUsername)
+                    </div>
+                </div>
+
+
+                <div class="col-sm-12">
+                    <div class="editor-label col-sm-4">
+                        @Html.LabelFor(model => model.BloodGroup)
+                    </div>
+                    <div class="editor-field col-sm-8">
+                        @Html.DropDownList("BloodGroup", new List<SelectListItem>
+                    {
+                        new SelectListItem {Text = "A(+)", Value = "A(+)"},
+                        new SelectListItem {Text = "A(-)", Value = "A(-)"},
+                        new SelectListItem {Text = "B(+)", Value = "B(+)"},
+                        new SelectListItem {Text = "B(-)", Value = "B(-)"},
+                        new SelectListItem {Text = "O(+)", Value = "O(+)"},
+                        new SelectListItem {Text = "O(-)", Value = "O(-)"},
+                        new SelectListItem {Text = "AB(+)", Value = "AB(+)"},
+                        new SelectListItem {Text = "AB(-)", Value = "AB(-)"}
+                    }, "-Select Blood Group-")
+
+                        @Html.ValidationMessageFor(model => model.BloodGroup)
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="editor-label col-sm-4">
+                        @Html.LabelFor(model => model.Amount)
+                    </div>
+                    <div class="editor-field col-sm-8">
+                        @Html.EditorFor(model => model.Amount)
+                        @Html.ValidationMessageFor(model => model.Amount)
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="editor-label col-sm-4">
+                        @Html.LabelFor(model => model.BookingStartingDate)
+                    </div>
+                    <div class="editor-field col-sm-8">
+                        @Html.EditorFor(model => model.BookingStartingDate)
+                        @Html.ValidationMessageFor(model => model.BookingStartingDate)
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="editor-label col-sm-4">
+                        @Html.LabelFor(model => model.BookingEndingDate)
+                    </div>
+                    <div class="editor-field col-sm-8">
+                        @Html.EditorFor(model => model.BookingEndingDate)
+                        @Html.ValidationMessageFor(model => model.BookingEndingDate)
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <br />
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-2">
+                        <input type="submit" value="create" />
+                    </div>
+                    <div class="col-sm-7"></div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+}
+
+<div style="text-align: center;">
+    @Html.ActionLink("Back to Profile", "Index", "User")
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

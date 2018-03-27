@@ -1,0 +1,105 @@
+﻿@model IEnumerable<ProjectDAL.BloodGroupStock>
+
+@{
+    ViewBag.Title = "SearchBloodBankByBloodGroup";
+}
+
+<h2 style="color: white; text-align: center;">Search Blood Bank By Blood Group</h2>
+
+<div class="row">
+
+    <div class="col-sm-4"></div>
+
+    <div class="col-sm-4">
+
+        @using (@Html.BeginForm("SearchBloodBankByBloodGroup", "User", FormMethod.Get))
+        {
+            <div class="col-sm-12">
+                <div class="col-sm-4" style="text-align: right;">
+                    <b style="color: white">Blood Group: </b>
+                </div>
+
+                <div class="col-sm-8">
+                    @Html.DropDownList("BloodGroup", new List<SelectListItem>
+                    {
+                        new SelectListItem {Text = "A(+)", Value = "A(+)"},
+                        new SelectListItem {Text = "A(-)", Value = "A(-)"},
+                        new SelectListItem {Text = "B(+)", Value = "B(+)"},
+                        new SelectListItem {Text = "B(-)", Value = "B(-)"},
+                        new SelectListItem {Text = "O(+)", Value = "O(+)"},
+                        new SelectListItem {Text = "O(-)", Value = "O(-)"},
+                        new SelectListItem {Text = "AB(+)", Value = "AB(+)"},
+                        new SelectListItem {Text = "AB(-)", Value = "AB(-)"}
+                    }, "Select")
+                </div>
+            </div>
+            <br />    <br />
+            <div class="col-sm-12">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2">
+                    <input type="submit" value="Search" />
+                </div>
+                <div class="col-sm-6"></div>
+            </div>
+        }
+
+    </div>
+
+    <div class="col-sm-4"></div>
+
+    @* {
+        <b>search by:</b>
+        @Html.TextBox("City")<input type="submit" value="Search" />
+        }*@
+    <div class="col-sm-12">
+        <hr />
+    </div>
+
+
+    <div class="col-sm-12">
+        <table class="table" style="color: white;">
+
+            @if (Model.Count() != 0)
+            {
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BBUsername)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BloodGroupName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Amount)
+                    </th>
+                    <th></th>
+                </tr>
+            }
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BBUsername)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BloodGroupName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Book", "Create", "Booking", new { username = item.BBUsername }, null)
+                    </td>
+                </tr>
+            }
+
+
+        </table>
+
+        <div class="col-sm-12" style="color: white; text-align: center;">
+            <hr style="width: 100%;" /> <br />
+            @Html.ActionLink("Back", "Index")
+        </div>
+    </div>
+</div>

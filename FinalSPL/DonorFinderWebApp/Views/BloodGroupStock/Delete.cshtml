@@ -1,0 +1,50 @@
+﻿@using ProjectDAL
+@model ProjectDAL.BloodGroupStock
+
+@{
+    ViewBag.Title = "Delete";
+    
+}
+
+<h2 style="color: white; text-align: center;">Delete</h2>
+
+<h3 style="color: white; text-align: center;">Are you sure you want to delete this blood group stock?</h3>
+
+<fieldset>
+    <legend style="color: white; text-align: center;"></legend>
+    <table class="table" style="color: white; text-align: center;">
+        <tr>
+            <th style="text-align: center;">
+                @Html.DisplayNameFor(model => model.BBUsername)
+            </th>
+            <th style="text-align: center;">
+                @Html.DisplayNameFor(model => model.BloodGroupName)
+            </th>
+            <th style="text-align: center;">
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.BBUsername)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.BloodGroupName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Amount)
+            </td>
+        </tr>
+
+    </table>
+
+</fieldset>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p style="text-align: center;">
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back", "StockDetails", "BloodBank", new { username = Model.BBUsername }, null)
+    </p>
+}

@@ -1,0 +1,162 @@
+﻿@model IEnumerable<ProjectDAL.User>
+
+@{
+    ViewBag.Title = "Search Donor";
+}
+
+<h2 style="color: white; text-align: center;">Search Donor</h2>
+<hr />
+
+<div class="row">
+
+    <div class="col-sm-4"></div>
+
+    <div class="col-sm-4">
+
+        @using (@Html.BeginForm("SearchDonorForBloodBank", "User", FormMethod.Get))
+        {
+
+            <div class="col-sm-12">
+                <div class="col-sm-4" style="text-align: right;">
+                    <b style="color: white">Blood Group: </b>
+                </div>
+
+                <div class="col-sm-8">
+                    @Html.DropDownList("BloodGroup", new List<SelectListItem>
+                    {
+                        new SelectListItem {Text = "A(+)", Value = "A(+)"},
+                        new SelectListItem {Text = "A(-)", Value = "A(-)"},
+                        new SelectListItem {Text = "B(+)", Value = "B(+)"},
+                        new SelectListItem {Text = "B(-)", Value = "B(-)"},
+                        new SelectListItem {Text = "O(+)", Value = "O(+)"},
+                        new SelectListItem {Text = "O(-)", Value = "O(-)"},
+                        new SelectListItem {Text = "AB(+)", Value = "AB(+)"},
+                        new SelectListItem {Text = "AB(-)", Value = "AB(-)"}
+                    }, "Select")
+
+                </div>
+            </div>
+            <br />    <br />
+            <div class="col-sm-12">
+                <div class="col-sm-4" style="text-align: right;">
+                    <b style="color: white">City: </b>
+                </div>
+
+                <div class="col-sm-8">
+                    @Html.DropDownList("City", new List<SelectListItem>
+                    {
+                        new SelectListItem {Text = "Mymensingh", Value = "Mymensingh"},
+                        new SelectListItem {Text = "Dhaka", Value = "Dhaka"},
+                        new SelectListItem {Text = "Rajshahi", Value = "Rajshahi"},
+                        new SelectListItem {Text = "Chittagong", Value = "Chittagong"},
+                        new SelectListItem {Text = "Sylhet", Value = "Sylhet"},
+                        new SelectListItem {Text = "Rangpur", Value = "Rangpur",},
+                        new SelectListItem {Text = "Khulna", Value = "Khulna"},
+                        new SelectListItem {Text = "Barisal", Value = "Barisal"}
+                    }, "Select")
+                </div>
+            </div>
+            <br />    <br />
+            <div class="col-sm-12">
+                <div class="col-sm-5"></div>
+                <div class="col-sm-2">
+                    <input type="submit" value="Search" />
+                </div>
+                <div class="col-sm-5"></div>
+            </div>
+        }
+
+    </div>
+
+    <div class="col-sm-4"></div>
+
+    @* {
+        <b>search by:</b>
+        @Html.TextBox("City")<input type="submit" value="Search" />
+        }*@
+    <div class="col-sm-12">
+        <hr />
+    </div>
+
+
+    <div class="col-sm-12">
+
+        <table style="color: white; text-align: center; border: 1px; width: 100%;">
+
+            @if (Model.Count() != 0)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayNameFor(model => model.BloodGroup)
+                    </td>
+                    <td>
+                        @Html.DisplayNameFor(model => model.City)
+                    </td>
+                    <td>
+                        @Html.DisplayNameFor(model => model.AreaWithinCity)
+                    </td>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayNameFor(model => model.ContactNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayNameFor(model => model.DonationStatus)
+                    </td>
+                </tr>
+
+
+            }
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BloodGroup)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AreaWithinCity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DonationStatus)
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        <div class="col-sm-12" style="text-align: center;">
+            <p>@Html.ActionLink("Back", "Index", "BloodBank")</p>
+        </div>
+
+    </div>
+</div>

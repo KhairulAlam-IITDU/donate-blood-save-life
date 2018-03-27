@@ -1,0 +1,178 @@
+﻿body {
+    width: 100%;
+    font-size: 1.25em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-image: url("Images/Red_Background_02.jpg");
+}
+
+header, footer, nav, section {
+    display: block;
+}
+
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+    color: white;
+    text-align: right;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+#maincontent {
+    width: auto;
+}
+
+#navbar {
+    background-color: orangered;
+    font-size: 16px;
+    color: white;
+    text-align: left;
+    height: 30px;
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    width: 100%;
+    
+}
+#myNav {
+    height: 50px;
+
+}
+#body {
+    margin-top: -18px;
+}
+
+#myCarousel {
+    width: 100%;
+    /*height: 100px;*/
+}
+.carouselImg {
+    height: 100px;
+}
+
+.login {
+    background-color: gainsboro;
+    border-style: solid;
+    border-color: #232323;
+}
+
+.userHome {
+    width: 100%;
+    height: 600px;
+}
+
+.userSearchDonor {
+    width: 100%;
+    height: 600px;
+}
+
+.container-fluid {
+    width: 100%;
+    background-color: black;
+}
+
+#userCreateFieldset {
+    text-align: center;
+}
+
+#userCreateBottomLinks {
+    color: white;
+    text-align: center;
+}
+
+.homeBody {
+    width: 100%;
+    height: 700px;
+}
+
+#about {
+    width: 100%;
+    height: 700px;
+}
+
+#contactUs {
+    width: 100%;
+    height: 700px;
+}
+
+#listViewTable {
+    border-style: solid;
+    border-color: #232323;
+    text-align: left;
+    word-spacing: normal;
+}
+
+.form-group {
+    color: white;
+}
+
+.table-hover {
+    color: gainsboro;
+}
+
+.userDash {
+    background: gainsboro;
+    margin-top: 50px;
+    height: 400px;
+}
+
+#userMessage {
+    height: 50px;
+    color: #232323;
+}
+
+#userMenu {
+    height: 350px;
+}
+
+#editFooter {
+    color: white;
+    text-align: center;
+}

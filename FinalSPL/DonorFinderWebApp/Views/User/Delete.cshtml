@@ -1,0 +1,123 @@
+﻿@model ProjectDAL.User
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 style="color: white; text-align: center;">Delete</h2>
+
+<h3 style="color: white; text-align: center;">Are you sure you want to delete this user?</h3>
+
+
+<fieldset>
+    @*<legend style="color: white; text-align: center;">User</legend>*@
+    <br />
+
+    <table class="table" style="color: white;">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BloodGroup)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AreaWithinCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DonationStatus)
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.UserName)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(model => model.Password)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(model => model.Name)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(model => model.Gender)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(model => model.BloodGroup)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(model => model.City)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(model => model.AreaWithinCity)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(model => model.Email)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(model => model.ContactNumber)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(model => model.Address)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(model => model.DonationStatus)
+            </td>
+        </tr>
+    </table>
+</fieldset>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    <p style="text-align: center">
+        <input type="submit" value="Delete" />
+        <br /> <br />
+        @Html.ActionLink("Back to Profile", "Index")
+    </p>
+
+}

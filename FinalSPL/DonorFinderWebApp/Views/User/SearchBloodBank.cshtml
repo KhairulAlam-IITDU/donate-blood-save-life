@@ -1,0 +1,50 @@
+﻿@using ProjectDAL
+@model ProjectDAL.User
+
+
+@{
+    ViewBag.Title = "Index";
+
+    var user = new UserRepository().GetUserByUsername(User.Identity.Name);
+}
+
+<div class="userHome">
+
+    <br />
+    <hr style="color: white;" />
+
+    <div class="row">
+
+        <div class="col-sm-4"></div>
+
+        <div class="userDash col-sm-4">
+
+            <div id="userMessage" style="color: black;">
+
+                <p>@ViewBag.SuccessMessage</p>
+
+            </div>
+
+            <div id="userMenu">
+                <h3 style="color: black; text-align: center;">Menu</h3>
+                <table class="table" style="text-align: center; height: 180px;">
+                    <tr style="background: beige;">
+                        <td style="vertical-align: middle;">@Html.ActionLink("Search By City", "SearchBloodBankByCity", "User")</td>
+                    </tr>
+                    <tr style="background: beige;">
+                        <td style="vertical-align: middle;">@Html.ActionLink("Search by  BloodGroup", "SearchBloodBankByBloodGroup", "User")</td>
+                  
+                </table>
+            </div>
+
+        </div>
+
+        <div class="col-sm-4"></div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Views/Shared/_Layout.cshtml")
+}

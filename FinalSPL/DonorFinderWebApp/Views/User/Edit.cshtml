@@ -1,0 +1,175 @@
+﻿@model ProjectDAL.User
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2 style="color: white; text-align: center;">Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend style="color: white; text-align: center;">User</legend>
+
+        <div class="row">
+
+            <div class="col-sm-4"></div>
+
+            <div class="col-sm-6">
+
+                <div class="col-sm-12">
+                    <div class="editor-label col-sm-3">
+                        @Html.LabelFor(model => model)
+                    </div>
+                    <div class="editor-field col-sm-9">
+                        @Html.EditorFor(model => model.Password)
+                        @Html.ValidationMessageFor(model => model.Password)
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="editor-label col-sm-3">
+                        @Html.LabelFor(model => model.Name)
+                    </div>
+                    <div class="editor-field col-sm-9">
+                        @Html.EditorFor(model => model.Name)
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="editor-label col-sm-3">
+                        @Html.LabelFor(model => model.Gender)
+                    </div>
+                    <div class="editor-field col-sm-9">
+                        @Html.DropDownList("Gender", new List<SelectListItem>
+                        {
+                            new SelectListItem {Text = "Male", Value = "Male"},
+                            new SelectListItem {Text = "Female", Value = "Female"}
+                        }, "----Select Gender----")
+                        @Html.ValidationMessageFor(model => model.Gender)
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="editor-label col-sm-3">
+                        @Html.LabelFor(model => model.BloodGroup)
+                    </div>
+                    <div class="editor-field col-sm-9">
+                        @Html.DropDownList("BloodGroup", new List<SelectListItem>
+                        {
+                            new SelectListItem {Text = "A(+)", Value = "A(+)"},
+                            new SelectListItem {Text = "A(-)", Value = "A(-)"},
+                            new SelectListItem {Text = "B(+)", Value = "B(+)"},
+                            new SelectListItem {Text = "B(-)", Value = "B(-)"},
+                            new SelectListItem {Text = "O(+)", Value = "O(+)"},
+                            new SelectListItem {Text = "O(-)", Value = "O(-)"},
+                            new SelectListItem {Text = "AB(+)", Value = "AB(+)"},
+                            new SelectListItem {Text = "AB(-)", Value = "AB(-)"}
+                        }, "-Select Blood Group-")
+                        @Html.ValidationMessageFor(model => model.BloodGroup)
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="editor-label col-sm-3">
+                        @Html.LabelFor(model => model.City)
+                    </div>
+                    <div class="editor-field col-sm-9">
+                        @Html.DropDownList("City", new List<SelectListItem>
+                        {
+                            new SelectListItem {Text = "Mymensingh", Value = "Mymensingh"},
+                            new SelectListItem {Text = "Dhaka", Value = "Dhaka"},
+                            new SelectListItem {Text = "Rajshahi", Value = "Rajshahi"},
+                            new SelectListItem {Text = "Chittagong", Value = "Chittagong"},
+                            new SelectListItem {Text = "Sylhet", Value = "Sylhet"},
+                            new SelectListItem {Text = "Rangpur", Value = "Rangpur",},
+                            new SelectListItem {Text = "Khulna", Value = "Khulna"},
+                            new SelectListItem {Text = "Barisal", Value = "Barisal"}
+                        }, "------Select City-------")
+                        @Html.ValidationMessageFor(model => model.City)
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="editor-label col-sm-3">
+                        @Html.LabelFor(model => model.AreaWithinCity)
+                    </div>
+                    <div class="editor-field col-sm-9">
+                        @Html.EditorFor(model => model.AreaWithinCity)
+                        @Html.ValidationMessageFor(model => model.AreaWithinCity)
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="editor-label col-sm-3">
+                        @Html.LabelFor(model => model.Email)
+                    </div>
+                    <div class="editor-field col-sm-9">
+                        @Html.EditorFor(model => model.Email)
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="editor-label col-sm-3">
+                        @Html.LabelFor(model => model.ContactNumber)
+                    </div>
+                    <div class="editor-field col-sm-9">
+                        @Html.EditorFor(model => model.ContactNumber)
+                        @Html.ValidationMessageFor(model => model.ContactNumber)
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="editor-label col-sm-3">
+                        @Html.LabelFor(model => model.Address)
+                    </div>
+                    <div class="editor-field col-sm-9">
+                        @Html.EditorFor(model => model.Address)
+                        @Html.ValidationMessageFor(model => model.Address)
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="editor-label col-sm-3">
+                        @Html.LabelFor(model => model.DonationStatus)
+                    </div>
+                    <div class="editor-field col-sm-9">
+                        @Html.DropDownList("DonationStatus", new List<SelectListItem>
+                        {
+                            new SelectListItem {Text = "Available", Value = "Available"},
+                            new SelectListItem {Text = " Not Available", Value = " Not Available"}
+                        }, "-----Select Status-----")
+                        @Html.ValidationMessageFor(model => model.DonationStatus)
+                    </div>
+                </div>
+
+
+                <div class="col-sm-12">
+                    <br />
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-2">
+                        <input type="submit" value="Save" />
+
+                    </div>
+                    <div class="col-sm-6"></div>
+                </div>
+            </div>
+
+            <div class="col-sm-2"></div>
+
+        </div>
+    </fieldset>
+}
+
+<div style="text-align: center;">
+    <br/>
+    @Html.ActionLink("Back to Profile", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

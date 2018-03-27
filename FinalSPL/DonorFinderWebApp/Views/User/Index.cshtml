@@ -1,0 +1,61 @@
+﻿@using ProjectDAL
+@model ProjectDAL.User
+
+
+@{
+    ViewBag.Title = "Index";
+
+    var user = new UserRepository().GetUserByUsername(User.Identity.Name);
+}
+
+<div class="userHome">
+
+    <br />
+    <h2 style="color: white; text-align: center;">Profile</h2>
+    <hr style="color: white;" />
+
+    <div class="row">
+
+        <div class="col-sm-4"></div>
+
+        <div class="userDash col-sm-4">
+
+            <div id="userMessage" style="color: black;">
+
+                <p>@ViewBag.SuccessMessage</p>
+
+            </div>
+
+            <div id="userMenu">
+                <h3 style="color: black; text-align: center;">Menu</h3>
+                <table class="table" style="text-align: center; height: 180px;">
+                    <tr style="background: beige;">
+                        <td style="vertical-align: middle;">@Html.ActionLink("Search Donor", "SearchDonor", "User")</td>
+                    </tr>
+                    <tr style="background: beige;">
+                        <td style="vertical-align: middle;">@Html.ActionLink("Search Blood Bank", "SearchBloodBank")</td>
+                    </tr>
+                    <tr style="background: beige;">
+                        <td style="vertical-align: middle;">
+                            @Html.ActionLink("Update", "Edit", new { username = user.UserName })
+                        </td>
+                    </tr>
+                    <tr style="background: beige;">
+                        <td style="vertical-align: middle;">
+                            @Html.ActionLink("Account Settings", "Details", new { username = user.UserName })
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="col-sm-4"></div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Views/Shared/_Layout.cshtml")
+}

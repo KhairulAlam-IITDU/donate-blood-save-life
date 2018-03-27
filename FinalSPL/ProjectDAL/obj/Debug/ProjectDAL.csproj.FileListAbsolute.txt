@@ -1,0 +1,10 @@
+C:\Users\Probook\Desktop\Final\FinalSPL\ProjectDAL\bin\Debug\ProjectDAL.dll.config
+C:\Users\Probook\Desktop\Final\FinalSPL\ProjectDAL\bin\Debug\ProjectDAL.dll
+C:\Users\Probook\Desktop\Final\FinalSPL\ProjectDAL\bin\Debug\ProjectDAL.pdb
+C:\Users\Probook\Desktop\Final\FinalSPL\ProjectDAL\bin\Debug\EntityFramework.dll
+C:\Users\Probook\Desktop\Final\FinalSPL\ProjectDAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Probook\Desktop\Final\FinalSPL\ProjectDAL\bin\Debug\EntityFramework.xml
+C:\Users\Probook\Desktop\Final\FinalSPL\ProjectDAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Probook\Desktop\Final\FinalSPL\ProjectDAL\obj\Debug\ProjectDAL.dll
+C:\Users\Probook\Desktop\Final\FinalSPL\ProjectDAL\obj\Debug\ProjectDAL.pdb
+C:\Users\Probook\Desktop\Final\FinalSPL\ProjectDAL\obj\Debug\ProjectDAL.csprojResolveAssemblyReference.cache
